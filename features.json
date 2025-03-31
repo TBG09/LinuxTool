@@ -1,0 +1,11 @@
+{
+  "features": [
+    {
+      "id": 1,
+      "name": "debug_mode",
+      "category": "Debugging",
+      "command_enable": "echo 1 | sudo tee /proc/sys/kernel/debug",
+      "command_disable": "echo 0 | sudo tee /proc/sys/kernel/debug"
+    }
+  ]
+}
