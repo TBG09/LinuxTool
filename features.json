@@ -6,6 +6,7 @@
       "category": "Debugging",
       "command_enable": "echo 1 | sudo tee /proc/sys/kernel/debug",
       "command_disable": "echo 0 | sudo tee /proc/sys/kernel/debug",
+      "command_query": "cat /proc/sys/kernel/debug",
       "supportedKernels": ["%ANY%", "5.10", "5.15", "6.1"],
       "supportedDistros": ["%ANY%", "Arch Linux", "Ubuntu"],
       "supportedDesktops": ["%ANY%", "GNOME", "KDE"]
@@ -16,6 +17,7 @@
       "category": "Debugging",
       "command_enable": "echo 7 | sudo tee /proc/sys/kernel/printk",
       "command_disable": "echo 4 | sudo tee /proc/sys/kernel/printk",
+      "command_query": "cat /proc/sys/kernel/printk",
       "supportedKernels": ["6.1", "6.5"],
       "supportedDistros": ["%ANY%", "Debian", "Fedora"],
       "supportedDesktops": ["GNOME", "KDE", "XFCE"]
@@ -26,6 +28,7 @@
       "category": "Networking",
       "command_enable": "echo \"bbr\" | sudo tee /proc/sys/net/ipv4/tcp_congestion_control",
       "command_disable": "echo \"reno\" | sudo tee /proc/sys/net/ipv4/tcp_congestion_control",
+      "command_query": "cat /proc/sys/net/ipv4/tcp_congestion_control",
       "supportedKernels": ["5.15", "6.1", "6.5"],
       "supportedDistros": ["Ubuntu", "Fedora"],
       "supportedDesktops": ["%ANY%"]
