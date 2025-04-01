@@ -32,6 +32,50 @@
       "supportedKernels": ["5.15", "6.1", "6.5"],
       "supportedDistros": ["Ubuntu", "Fedora"],
       "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 4,
+      "name": "swappiness",
+      "category": "Memory Management",
+      "command_enable": "echo 10 | sudo tee /proc/sys/vm/swappiness",
+      "command_disable": "echo 60 | sudo tee /proc/sys/vm/swappiness",
+      "command_query": "cat /proc/sys/vm/swappiness",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 5,
+      "name": "transparent_hugepages",
+      "category": "Memory Management",
+      "command_enable": "echo always | sudo tee /sys/kernel/mm/transparent_hugepage/enabled",
+      "command_disable": "echo never | sudo tee /sys/kernel/mm/transparent_hugepage/enabled",
+      "command_query": "cat /sys/kernel/mm/transparent_hugepage/enabled",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 6,
+      "name": "iommu",
+      "category": "Hardware",
+      "command_enable": "echo 1 | sudo tee /sys/kernel/iommu_groups/enable",
+      "command_disable": "echo 0 | sudo tee /sys/kernel/iommu_groups/enable",
+      "command_query": "cat /sys/kernel/iommu_groups/enable",
+      "supportedKernels": ["5.10", "5.15", "6.1"],
+      "supportedDistros": ["%ANY%", "Arch Linux", "Debian"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 7,
+      "name": "scheduler_performance",
+      "category": "Performance",
+      "command_enable": "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor",
+      "command_disable": "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor",
+      "command_query": "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
     }
   ]
 }
