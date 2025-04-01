@@ -167,6 +167,90 @@
       "supportedKernels": ["%ANY%"],
       "supportedDistros": ["%ANY%"],
       "supportedDesktops": ["%ANY%"]
-    }   
+    },
+    {
+      "id": 15,
+      "name": "numa_balancing",
+      "category": "Performance",
+      "description": "Enables NUMA (Non-Uniform Memory Access) balancing to optimize memory allocation on multi-socket systems.",
+      "command_enable": "echo 1 | sudo tee /proc/sys/kernel/numa_balancing",
+      "command_disable": "echo 0 | sudo tee /proc/sys/kernel/numa_balancing",
+      "command_query": "cat /proc/sys/kernel/numa_balancing",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 16,
+      "name": "dirty_ratio_adjustment",
+      "category": "Performance, Storage",
+      "description": "Adjusts the kernel's dirty ratio and dirty background ratio to control disk write caching behavior.",
+      "command_enable": "sudo sysctl -w vm.dirty_ratio=10 && sudo sysctl -w vm.dirty_background_ratio=5",
+      "command_disable": "sudo sysctl -w vm.dirty_ratio=20 && sudo sysctl -w vm.dirty_background_ratio=10",
+      "command_query": "sysctl vm.dirty_ratio vm.dirty_background_ratio",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 17,
+      "name": "tcp_congestion_cubic",
+      "category": "Networking",
+      "description": "Enables the Cubic TCP congestion control algorithm. (Alternative to BBR)",
+      "command_enable": "echo \"cubic\" | sudo tee /proc/sys/net/ipv4/tcp_congestion_control",
+      "command_disable": "echo \"reno\" | sudo tee /proc/sys/net/ipv4/tcp_congestion_control",
+      "command_query": "cat /proc/sys/net/ipv4/tcp_congestion_control",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 18,
+      "name": "timer_granularity",
+      "category": "Performance",
+      "description": "Adjusts the system timer granularity to reduce latency in certain applications.",
+      "command_enable": "sudo sh -c \"echo 1000000 > /proc/sys/timer/hz\"",
+      "command_disable": "sudo sh -c \"echo 250 > /proc/sys/timer/hz\"",
+      "command_query": "cat /proc/sys/timer/hz",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 19,
+      "name": "wake_on_lan",
+      "category": "Networking, Hardware",
+      "description": "Enables Wake-on-LAN functionality for a specific network interface.",
+      "command_enable": "sudo ethtool -s eth0 wol g",
+      "command_disable": "sudo ethtool -s eth0 wol d",
+      "command_query": "sudo ethtool eth0 | grep Wake-on",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
+    },
+        {
+      "id": 20,
+      "name": "entropy_generation_haveged",
+      "category": "Security, Performance",
+      "description": "Improve entropy generation by enabling haveged.",
+      "command_enable": "sudo apt install haveged -y && sudo systemctl enable --now haveged",
+      "command_disable": "sudo systemctl disable --now haveged && sudo apt remove haveged -y",
+      "command_query": "systemctl is-active haveged",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["Debian", "Ubuntu"],
+      "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 21,
+      "name": "entropy_generation_haveged_arch",
+      "category": "Security, Performance",
+      "description": "Improve entropy generation by enabling haveged.",
+      "command_enable": "sudo pacman -S haveged --noconfirm && sudo systemctl enable --now haveged",
+      "command_disable": "sudo systemctl disable --now haveged && sudo pacman -R haveged --noconfirm",
+      "command_query": "systemctl is-active haveged",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["Arch", "Manjaro"],
+      "supportedDesktops": ["%ANY%"]
+    }
   ]
 }
