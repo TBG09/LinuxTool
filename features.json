@@ -119,6 +119,18 @@
       "supportedKernels": ["%ANY%"],
       "supportedDistros": ["%ANY%"],
       "supportedDesktops": ["%ANY%"]
+    },
+    {
+      "id": 11,
+      "name": "filesystem_compression",
+      "category": "Storage",
+      "description": "Enables filesystem-level compression, reducing disk space usage but potentially affecting performance.",
+      "command_enable": "sudo mount -o remount,compress=zstd /",
+      "command_disable": "sudo mount -o remount,nocompress /",
+      "command_query": "mount | grep ' / ' | grep -o 'compress=[^,]*' || echo 'Compression disabled'",
+      "supportedKernels": ["%ANY%"],
+      "supportedDistros": ["%ANY%"],
+      "supportedDesktops": ["%ANY%"]
     }
   ]
 }
