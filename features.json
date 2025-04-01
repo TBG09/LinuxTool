@@ -142,7 +142,7 @@
         "supportedKernels": ["%ANY%"],
         "supportedDistros": ["%ANY%"],
         "supportedDesktops": ["%ANY%"],
-        "command_enable": "sudo sh -c 'modprobe zram && echo lz4 > /sys/block/zram0/comp_algorithm && echo $(( $(grep MemTotal /proc/meminfo | awk \"{print $2}\") * 1024 / 2 )) > /sys/block/zram0/disksize && mkswap /dev/zram0 && swapon /dev/zram0'", //<-- Comma added here
+        "command_enable": "sudo sh -c 'modprobe zram && echo lz4 > /sys/block/zram0/comp_algorithm && echo $(( $(grep MemTotal /proc/meminfo | awk \"{print $2}\") * 1024 / 2 )) > /sys/block/zram0/disksize && mkswap /dev/zram0 && swapon /dev/zram0'"
 
     },
     {
