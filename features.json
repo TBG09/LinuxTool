@@ -133,20 +133,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-        "id": 12,
-        "name": "zram_swap",
-        "category": "Performance",
-        "description": "Enable ZRAM-based swap to improve performance on low-memory systems.",
-        "command_disable": "sudo swapoff /dev/zram0 && sudo rmmod zram",
-        "command_query": "swapon --show | grep zram || echo 'ZRAM swap not enabled'",
-        "supportedKernels": ["%ANY%"],
-        "supportedDistros": ["%ANY%"],
-        "supportedDesktops": ["%ANY%"],
-        "command_enable": "sudo sh -c 'modprobe zram && echo lz4 > /sys/block/zram0/comp_algorithm && echo $(( $(grep MemTotal /proc/meminfo | awk \"{print $2}\") * 1024 / 2 )) > /sys/block/zram0/disksize && mkswap /dev/zram0 && swapon /dev/zram0'"
-
-    },
-    {
-      "id": 13,
+      "id": 14,
       "name": "preload",
       "category": "Performance",
       "description": "Enable preload to speed up application startup times.",
@@ -158,7 +145,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 14,
+      "id": 15,
       "name": "systemd_boot_opt",
       "category": "Performance",
       "description": "Optimize systemd boot time by enabling parallel startup and disabling unnecessary services.",
@@ -170,7 +157,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 15,
+      "id": 16,
       "name": "numa_balancing",
       "category": "Performance",
       "description": "Enables NUMA (Non-Uniform Memory Access) balancing to optimize memory allocation on multi-socket systems.",
@@ -182,7 +169,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 16,
+      "id": 17,
       "name": "dirty_ratio_adjustment",
       "category": "Performance, Storage",
       "description": "Adjusts the kernel's dirty ratio and dirty background ratio to control disk write caching behavior.",
@@ -194,7 +181,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 17,
+      "id": 18,
       "name": "tcp_congestion_cubic",
       "category": "Networking",
       "description": "Enables the Cubic TCP congestion control algorithm. (Alternative to BBR)",
@@ -206,7 +193,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 18,
+      "id": 19,
       "name": "timer_granularity",
       "category": "Performance",
       "description": "Adjusts the system timer granularity to reduce latency in certain applications.",
@@ -218,7 +205,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 19,
+      "id": 20,
       "name": "wake_on_lan",
       "category": "Networking, Hardware",
       "description": "Enables Wake-on-LAN functionality for a specific network interface.",
@@ -230,7 +217,7 @@
       "supportedDesktops": ["%ANY%"]
     },
         {
-      "id": 20,
+      "id": 21,
       "name": "entropy_generation_haveged",
       "category": "Security, Performance",
       "description": "Improve entropy generation by enabling haveged.",
@@ -242,7 +229,7 @@
       "supportedDesktops": ["%ANY%"]
     },
     {
-      "id": 21,
+      "id": 22,
       "name": "entropy_generation_haveged_arch",
       "category": "Security, Performance",
       "description": "Improve entropy generation by enabling haveged.",
